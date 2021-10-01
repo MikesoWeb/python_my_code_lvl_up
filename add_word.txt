@@ -1,5 +1,0 @@
-['four', 'five', 'six']
-['one', 'two', 'three']
-['Mike', 'Alex', 'Olga', 'Sergey']
-['k']
-['mom', 'dad', 'scooter', 'son', 'daughter', 'h']
