@@ -1,37 +1,39 @@
-from colorama import Fore, Back, Style
+from colorama import Fore
 from time import sleep
 
-sl = []
+db = []
 sleep(1)
 print(Fore.LIGHTMAGENTA_EX)
 print('Добро пожаловать в мой проект')
-print('Чтобы узнать подробнее, нажмите h')
+print('Чтобы узнать подробнее, нажмите help')
 
 with open('add_word.txt', 'a') as f:
-  while True:
-    print(Fore.YELLOW)
-    a = input('Enter new word: ')
-    if a not in sl:
-      sl.append(a)
-      if a == 'b':
-        sl.pop()
-        print(Fore.GREEN)
-        print(sl)
-      if a == 'k':
-        sl.pop()
-        print(Fore.LIGHTMAGENTA_EX)
-        print('1) Чтобы посмотреть что вы вели, нажмите b')
-        sleep(1)
-        print('2) Чтобы сохранить данные, нажмите s')
-        sleep(1)
-        print('3) Чтобы выйти из программы, нажмите q')
-      if a == 's':
-        sl.pop()
-        f.writelines(f'{sl}\n')
-      if a == 'q':
-        sl.pop()
-        break 
-     
-    else:
-      print(Fore.RED)
-      print('Word in base too')
+    while True:
+        print(Fore.YELLOW)
+        word = input('Enter a new word: ')
+        if word not in db:
+            db.append(word)
+            if word == 'show':
+                db.pop()
+                print(Fore.GREEN)
+                print(db)
+            if word == 'help':
+                db.pop()
+                print(Fore.LIGHTMAGENTA_EX)
+                print('1) Чтобы посмотреть что вы вели, нажмите show')
+                sleep(0.6)
+                print('2) Чтобы сохранить данные, нажмите save')
+                sleep(0.6)
+                print('3) Чтобы выйти из программы, нажмите quit')
+            if word == 'save':
+                db.pop()
+                with open('db.txt',  'a', encoding='utf-8') as file:
+                    file.writelines(f'{db}\n')
+                print(f'Сохранено в текстовом файле {file.name}')
+            if word == 'quit':
+                db.pop()
+                break
+
+        else:
+            print(Fore.RED)
+            print('Word in base too')
